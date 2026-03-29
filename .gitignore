@@ -6,6 +6,7 @@ node_modules/
 # Production builds
 /dist
 /build
+/playground-dist
 
 # Testing
 coverage/
@@ -64,6 +65,9 @@ Thumbs.db
 # parcel-bundler cache (https://parceljs.org/)
 .cache
 .parcel-cache
+
+# Vite
+.vite
 
 # TypeScript cache
 *.tsbuildinfo

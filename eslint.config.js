@@ -5,7 +5,7 @@ import globals from 'globals';
 
 export default [
   {
-    ignores: ['dist/**', 'node_modules/**', '*.js', 'rollup.config.js'],
+    ignores: ['dist/**', 'node_modules/**', '*.js', 'rollup.config.js', 'vite.config.ts', 'playground/**'],
   },
   {
     files: ['src/**/*.{ts,tsx}'],

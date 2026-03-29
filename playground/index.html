@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="lime">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lizard UI — Eco-tech components</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" sizes="any" />
+
+    <!-- Primary SEO & link previews (fallback when OG/Twitter are not used) -->
+    <meta
+      name="description"
+      content="Lizard UI — React components with shadcn-style primitives and Tailwind-native glass: gradients, blur, and theme tokens. Light/dark, 23 hue themes, tree-shakeable ESM/CJS."
+    />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://github.com/lizard-ui/lizard-ui" />
+
+    <!-- Open Graph (Facebook, LinkedIn, Slack, Discord, iMessage, etc.) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Lizard UI" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:url" content="https://github.com/lizard-ui/lizard-ui" />
+    <meta property="og:title" content="Lizard UI — Eco-tech components" />
+    <meta
+      property="og:description"
+      content="React component library with glass Card and Button variants, layout primitives, and GitHub footer — Tailwind themes, no WebGL glass runtime. MIT, TypeScript, Vite-ready."
+    />
+    <meta
+      property="og:image"
+      content="https://raw.githubusercontent.com/lizard-ui/lizard-ui/main/playground/assets/hero-terrarium.png"
+    />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="800" />
+    <meta property="og:image:height" content="800" />
+    <meta
+      property="og:image:alt"
+      content="Lizard UI — eco-tech terrarium hero art for the component showcase"
+    />
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Lizard UI — Eco-tech components" />
+    <meta
+      name="twitter:description"
+      content="Shadcn-style React primitives, glass UI, 23 data-theme palettes, light/dark/system. ESM + CJS, Tailwind-native."
+    />
+    <meta
+      name="twitter:image"
+      content="https://raw.githubusercontent.com/lizard-ui/lizard-ui/main/playground/assets/hero-terrarium.png"
+    />
+    <meta
+      name="twitter:image:alt"
+      content="Lizard UI — eco-tech terrarium hero art for the component showcase"
+    />
+
+    <!-- PWA / browser UI hints -->
+    <meta name="theme-color" content="#f6f9ea" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#121210" media="(prefers-color-scheme: dark)" />
+    <meta name="application-name" content="Lizard UI" />
+    <meta name="apple-mobile-web-app-title" content="Lizard UI" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem('lizard-ui-theme');
+          if (t) document.documentElement.setAttribute('data-theme', t);
+          var s = localStorage.getItem('lizard-ui-color-scheme');
+          var dark = false;
+          if (s === 'dark') dark = true;
+          else if (s === 'light') dark = false;
+          else dark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          document.documentElement.classList.toggle('dark', dark);
+          document.documentElement.style.colorScheme = dark ? 'dark' : 'light';
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/main.tsx"></script>
+  </body>
+</html>

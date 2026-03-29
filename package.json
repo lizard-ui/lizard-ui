@@ -1,7 +1,7 @@
 {
-  "name": "npm-package-template",
-  "version": "1.1.0",
-  "description": "A comprehensive TypeScript npm package template with automated publishing, testing, and modern tooling",
+  "name": "lizard-ui",
+  "version": "0.0.1",
+  "description": "Lizard UI is a library of UI components from terrarium-labs.",
   "type": "module",
   "main": "dist/index.cjs",
   "module": "dist/index.esm.js",
@@ -51,24 +51,22 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/xarlizard/npm-package-template.git"
+    "url": "git+https://github.com/lizard-ui/lizard-ui.git"
   },
   "publishConfig": {
     "access": "public"
   },
-  "homepage": "https://github.com/xarlizard/npm-package-template#readme",
+  "homepage": "https://github.com/lizard-ui/lizard-ui#readme",
   "bugs": {
-    "url": "https://github.com/xarlizard/npm-package-template/issues"
+    "url": "https://github.com/lizard-ui/lizard-ui/issues"
   },
   "keywords": [
-    "npm",
-    "template",
+    "lizard-ui",
+    "ui",
+    "components",
+    "library",
     "typescript",
-    "rollup",
-    "jest",
-    "eslint",
-    "github-actions",
-    "automated-publishing"
+    "react"
   ],
   "author": {
     "name": "Xarlizard",

@@ -104,13 +104,13 @@ All runtime dependencies are kept to a minimum to reduce attack surface.
 
 This security policy covers:
 
-- The React API Forge library code
+- The Lizard UI library code
 - Build and release processes
 - Documentation and examples
 
 This policy does not cover:
 
-- Your application's implementation using React API Forge
+- Your application's implementation using Lizard UI
 - Third-party services you connect to via the hooks
 - Security issues in React, Axios, or other dependencies (report to respective projects)
 
@@ -122,4 +122,4 @@ We appreciate security researchers and will acknowledge your contribution (with 
 - CHANGELOG.md mentions
 - Hall of fame (if we create one)
 
-Thank you for helping keep React API Forge and our community safe!
+Thank you for helping keep Lizard UI and our community safe!

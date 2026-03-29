@@ -1,6 +1,6 @@
 # Contributing to NPM Package Template
 
-First off, thank you for considering contributing to this npm package template! 🎉
+First off, thank you for considering contributing to this package repository! 🎉
 
 This template is designed to help developers quickly bootstrap production-ready npm packages. Your contributions help
 make this template even better for the community.
@@ -80,8 +80,8 @@ Documentation improvements are always welcome:
 1. **Fork and Clone**
 
    ```bash
-   git clone https://github.com/xarlizard/npm-package-template.git
-   cd npm-package-template
+   git clone https://github.com/lizard-ui/lizard-ui.git
+   cd lizard-ui
    ```
 
 2. **Install Dependencies**
@@ -110,7 +110,7 @@ Documentation improvements are always welcome:
    mkdir test-install
    cd test-install
    npm init -y
-   npm install ../npm-package-template-*.tgz
+   npm install ../lizard-ui-*.tgz
    ```
 
 ### Project Structure

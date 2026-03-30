@@ -25,20 +25,20 @@ try {
         Write-Host "🔍 Running pre-publish checks..." -ForegroundColor Yellow
         
         Write-Host "Linting..." -ForegroundColor Gray
-        npm run lint
+        bun run lint
         if ($LASTEXITCODE -ne 0) { throw "Linting failed" }
         
         Write-Host "Type checking..." -ForegroundColor Gray
-        npm run typecheck
+        bun run typecheck
         if ($LASTEXITCODE -ne 0) { throw "Type checking failed" }
         
         Write-Host "Running tests..." -ForegroundColor Gray
-        npm run test
+        bun run test
         if ($LASTEXITCODE -ne 0) { throw "Tests failed" }
     }
 
     Write-Host "Building package..." -ForegroundColor Gray
-    npm run build
+    bun run build
     if ($LASTEXITCODE -ne 0) { throw "Build failed" }
 
     if ($DryRun) {

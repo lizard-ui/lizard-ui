@@ -1,5 +1,9 @@
 name: Publish Package
 
+# Publishes to npm + GitHub Packages when:
+# - A GitHub Release is published (recommended), or
+# - You run this workflow manually (Actions → Publish Package → Run workflow).
+# Manual runs use the version already in package.json (npm rejects duplicate versions).
 on:
   release:
     types: [published]
@@ -50,7 +54,7 @@ jobs:
   publish-npm:
     needs: test
     runs-on: ubuntu-latest
-    if: github.event_name == 'release'
+    if: github.event_name == 'release' || github.event_name == 'workflow_dispatch'
     permissions:
       id-token: write
       contents: read
@@ -218,7 +222,7 @@ jobs:
   publish-github:
     needs: test
     runs-on: ubuntu-latest
-    if: github.event_name == 'release'
+    if: github.event_name == 'release' || github.event_name == 'workflow_dispatch'
     permissions:
       contents: read
       packages: write

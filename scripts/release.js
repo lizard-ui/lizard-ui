@@ -16,10 +16,10 @@ console.log(`🚀 Starting ${versionType} release...`);
 try {
   // Run pre-publish checks
   console.log('🔍 Running pre-publish checks...');
-  execSync('npm run lint', { stdio: 'inherit' });
-  execSync('npm run typecheck', { stdio: 'inherit' });
-  execSync('npm run test', { stdio: 'inherit' });
-  execSync('npm run build', { stdio: 'inherit' });
+  execSync('bun run lint', { stdio: 'inherit' });
+  execSync('bun run typecheck', { stdio: 'inherit' });
+  execSync('bun run test', { stdio: 'inherit' });
+  execSync('bun run build', { stdio: 'inherit' });
 
   // Bump version
   console.log(`📈 Bumping ${versionType} version...`);

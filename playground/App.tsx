@@ -1,11 +1,16 @@
 import { BackgroundPattern, Badge, Button, GitHubFooter } from 'lizard-ui';
 import { AppearanceToggle } from './AppearanceToggle';
+import { HERO_TERRARIUM } from './heroTerrarium';
 import { MainLayout } from './MainLayout';
 import { MainPageContent } from './MainPageContent';
 import { PAGE_MENU_ITEMS } from './menu-items';
 import { ThemeSelect } from './ThemeSelect';
+import { useTheme } from './ThemeProvider';
 
 export default function App() {
+  const { resolvedAppearance } = useTheme();
+  const heroSrc = HERO_TERRARIUM[resolvedAppearance];
+
   return (
     <MainLayout
       background={<BackgroundPattern variant="meshGrid" />}
@@ -40,7 +45,7 @@ export default function App() {
       logo={
         <a href="#hero" className="flex items-center gap-2 truncate font-semibold text-foreground">
           <img
-            src="/assets/hero-terrarium.png"
+            src={heroSrc}
             alt="Lizard UI"
             className="h-9 w-9 shrink-0 rounded-lg border border-border object-cover shadow-md"
             width={36}

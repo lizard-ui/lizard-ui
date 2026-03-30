@@ -1,6 +1,8 @@
 import { Button, Card, CardContent, CardDescription, CardHeader, CardTitle } from 'lizard-ui';
 import { CopyInstallButton, INSTALL } from './CopyInstallButton';
 import { CodeBlock } from './CodeBlock';
+import { HERO_TERRARIUM } from './heroTerrarium';
+import { useTheme } from './ThemeProvider';
 import buttonGlassRaw from './examples/button-glass.example.tsx?raw';
 import cardGlassRaw from './examples/card-glass.example.tsx?raw';
 import { ButtonGlassExample } from './examples/button-glass.example';
@@ -19,6 +21,9 @@ const buttonVariantByTint = {
 };
 
 export function MainPageContent() {
+  const { resolvedAppearance } = useTheme();
+  const heroSrc = HERO_TERRARIUM[resolvedAppearance];
+
   return (
     <>
       <section id="hero" className="relative z-10 mx-auto max-w-6xl px-4 py-12 md:px-6 md:py-16">
@@ -58,7 +63,7 @@ export function MainPageContent() {
           <div className="flex justify-center lg:justify-end">
             <div className="relative w-full max-w-md animate-[float_7s_ease-in-out_infinite] rounded-3xl border border-white/60 bg-gradient-to-br from-white/90 via-white/50 to-primary/20 p-1 shadow-xl [@media(prefers-reduced-motion:reduce)]:animate-none">
               <img
-                src="/assets/hero-terrarium.png"
+                src={heroSrc}
                 alt="Lizard UI terrarium artwork"
                 className="h-auto w-full rounded-[1.35rem] object-cover"
               />

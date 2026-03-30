@@ -48,24 +48,20 @@ jobs:
       - name: Dependency Review
         uses: actions/dependency-review-action@v4
 
-  npm-audit:
-    name: NPM Audit
+  dependency-audit:
+    name: Dependency audit (Bun)
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v6
-      
-      - name: Setup Node.js
-        uses: actions/setup-node@v6
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
         with:
-          node-version: '18'
-          cache: 'npm'
-      
+          bun-version: latest
+
       - name: Install dependencies
-        run: npm ci
-      
-      - name: Run npm audit
-        run: npm audit --audit-level=moderate
-      
-      - name: Check for security vulnerabilities
-        run: npm audit --audit-level=high --production
+        run: bun install --frozen-lockfile
+
+      - name: Audit dependencies
+        run: bun audit --audit-level=moderate

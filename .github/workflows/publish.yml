@@ -83,13 +83,19 @@ jobs:
         run: |
           # Backup original package.json
           cp package.json package.json.backup
+
+          # Project .npmrc must not map @lizard-ui to GitHub Packages, or scoped
+          # publishes go to the wrong registry. Temporarily move it aside for npm publish.
+          if [ -f .npmrc ]; then
+            mv .npmrc .npmrc.publish-backup
+          fi
           
           # Function to try publishing with current package.json
           try_publish() {
             local package_name=$(node -p "require('./package.json').name")
             echo "📦 Attempting to publish: $package_name"
-            
-            if npm publish; then
+            # Always target npmjs.org (Trusted Publishing OIDC + optional NPM_TOKEN)
+            if npm publish --registry https://registry.npmjs.org --access public; then
               echo "✅ Successfully published: $package_name"
               return 0
             else
@@ -125,72 +131,68 @@ jobs:
               return 1
             fi
           }
+
+          # Rewrite package.json from backup to @github-org/base-name (e.g. @lizard-ui/lizard-ui)
+          write_scoped_name_from_backup() {
+            node -e "
+              const fs = require('fs');
+              const pkg = JSON.parse(fs.readFileSync('package.json.backup', 'utf8'));
+              const owner = process.env.GITHUB_REPOSITORY.split('/')[0];
+              const base = pkg.name.replace(/^@[^/]+\//, '');
+              pkg.name = \`@\${owner}/\${base}\`;
+              pkg.publishConfig = { access: 'public', registry: 'https://registry.npmjs.org' };
+              fs.writeFileSync('package.json', JSON.stringify(pkg, null, 2));
+              console.log('📝 Package name for this attempt:', pkg.name);
+            "
+          }
           
           PUBLISH_SUCCESS=false
           AUTH_METHOD="Trusted Publishing (OIDC)"
+          ORIGINAL_NAME=$(node -p "require('./package.json.backup').name")
+          echo "🔐 Target name from package.json: $ORIGINAL_NAME (preferred install: npm i $ORIGINAL_NAME)"
           
-          # Step 1: Try with original name using Trusted Publishing
-          ORIGINAL_NAME=$(node -p "require('./package.json').name")
-          echo "🔐 Using authentication method: $AUTH_METHOD"
-          
+          # 1) Unscoped: Trusted Publishing (OIDC)
+          cp package.json.backup package.json
           if try_publish; then
             PUBLISH_SUCCESS=true
             echo "✅ Published using $AUTH_METHOD"
           else
-            echo "⚠️  Trusted Publishing failed, trying with scoped name..."
-            # Restore backup (keep backup for later fallback attempts)
-            cp package.json.backup package.json
-            
-            # Step 2: Try with scoped name using Trusted Publishing
-            node -e "
-              const pkg = require('./package.json');
-              const owner = process.env.GITHUB_REPOSITORY.split('/')[0];
-              const originalName = pkg.name.replace(/^@[^/]+\//, ''); // Remove existing scope if any
-              pkg.name = \`@\${owner}/\${originalName}\`;
-              pkg.publishConfig = { 
-                access: 'public',
-                registry: 'https://registry.npmjs.org'
-              };
-              console.log(\`📦 Retrying with scoped name: \${pkg.name}\`);
-              require('fs').writeFileSync('package.json', JSON.stringify(pkg, null, 2));
-            "
-            
+            # 2) Unscoped: NPM_TOKEN
+            echo "⚠️  Trusted Publishing failed, attempting unscoped publish with NPM_TOKEN..."
+            if setup_token_auth; then
+              AUTH_METHOD="NPM_TOKEN (fallback)"
+              cp package.json.backup package.json
+              if try_publish; then
+                PUBLISH_SUCCESS=true
+                echo "✅ Published using $AUTH_METHOD"
+              fi
+            fi
+          fi
+
+          # 3) Scoped fallback: npm does not expose a reliable "name taken" error code — retry as @org/base
+          #    (covers squatted unscoped names, org-only tokens, and other unscoped failures)
+          if [ "$PUBLISH_SUCCESS" = false ] && [[ "$ORIGINAL_NAME" != @* ]]; then
+            GH_ORG=$(echo "$GITHUB_REPOSITORY" | cut -d/ -f1)
+            echo "⚠️  Unscoped publish failed — retrying as scoped @${GH_ORG}/${ORIGINAL_NAME} (npm cannot reliably detect “name taken” vs other errors)"
+            write_scoped_name_from_backup
             if try_publish; then
               PUBLISH_SUCCESS=true
-              echo "✅ Published using $AUTH_METHOD with scoped name"
-            else
-              echo "⚠️  Trusted Publishing failed, attempting fallback to NPM_TOKEN..."
-              
-              # Step 3: Fallback to NPM_TOKEN if available
+              echo "✅ Published scoped package using $AUTH_METHOD"
+            elif [ -n "$NPM_TOKEN" ]; then
               if setup_token_auth; then
                 AUTH_METHOD="NPM_TOKEN (fallback)"
-                # Restore original package.json and try again (leave backup intact)
-                cp package.json.backup package.json
-                
+                write_scoped_name_from_backup
                 if try_publish; then
                   PUBLISH_SUCCESS=true
-                  echo "✅ Published using $AUTH_METHOD"
-                else
-                  # Try scoped name with token
-                  node -e "
-                    const pkg = require('./package.json');
-                    const owner = process.env.GITHUB_REPOSITORY.split('/')[0];
-                    const originalName = pkg.name.replace(/^@[^/]+\//, '');
-                    pkg.name = \`@\${owner}/\${originalName}\`;
-                    pkg.publishConfig = { 
-                      access: 'public',
-                      registry: 'https://registry.npmjs.org'
-                    };
-                    require('fs').writeFileSync('package.json', JSON.stringify(pkg, null, 2));
-                  "
-                  
-                  if try_publish; then
-                    PUBLISH_SUCCESS=true
-                    echo "✅ Published using $AUTH_METHOD with scoped name"
-                  fi
+                  echo "✅ Published scoped package using $AUTH_METHOD"
                 fi
               fi
             fi
+          fi
+
+          PUBLISHED_NAME=""
+          if [ "$PUBLISH_SUCCESS" = true ]; then
+            PUBLISHED_NAME=$(node -p "require('./package.json').name")
           fi
           
           # Always restore original package.json if backup exists
@@ -198,23 +200,26 @@ jobs:
             cp package.json.backup package.json
             echo "🔄 Restored original package.json"
           fi
+          if [ -f .npmrc.publish-backup ]; then
+            mv .npmrc.publish-backup .npmrc
+            echo "🔄 Restored .npmrc"
+          fi
           
           # Final check
           if [ "$PUBLISH_SUCCESS" = false ]; then
             echo "❌ Failed to publish with all authentication methods"
             echo ""
             echo "🔍 Troubleshooting:"
-            echo "1. Ensure Trusted Publishing is enabled in your npm account:"
-            echo "   https://www.npmjs.com/settings/YOUR_USERNAME/access-tokens"
-            echo "2. Verify the workflow path matches: .github/workflows/publish.yml"
-            echo "3. Alternatively, set NPM_TOKEN secret in repository settings"
-            echo "4. Check package name availability and permissions"
+            echo "1. npm Trusted Publishing: link this GitHub repo under the npm org/user at"
+            echo "   https://www.npmjs.com/settings/YOUR_ORG_OR_USER/packages/access (OIDC / GitHub Actions)."
+            echo "2. E404: enable Trusted Publishing for this repo, or ensure the npm user/org can create the package name."
+            echo "3. E403 with NPM_TOKEN: use an Automation token with publish rights (2FA bypass), or fix org permissions."
+            echo "4. Unscoped names (e.g. lizard-ui) must be available on npm and not squatted by another account."
             exit 1
           fi
           
-          SCOPED_NAME=$(node -p "require('./package.json').name" 2>/dev/null || echo "$ORIGINAL_NAME")
-          if [[ "$SCOPED_NAME" == @* ]]; then
-            echo "💡 Users can install with: npm install $SCOPED_NAME"
+          if [ -n "$PUBLISHED_NAME" ]; then
+            echo "💡 Published to npm as: $PUBLISHED_NAME — install: npm install $PUBLISHED_NAME"
           fi
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

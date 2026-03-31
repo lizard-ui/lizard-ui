@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: production
-      url: https://your-deployment-url.com
+      url: https://lizard-ui.pages.dev
 
     steps:
       - uses: actions/checkout@v6

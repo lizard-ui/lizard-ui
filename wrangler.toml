@@ -1,0 +1,11 @@
+# Cloudflare Pages — https://developers.cloudflare.com/pages/functions/wrangler-configuration/
+# Keep `name` in sync with your Pages project in the dashboard, or run:
+#   npx wrangler pages download config <PROJECT_NAME>
+#
+# Build command (set in Pages UI or CI): npm install && npm run build:site
+# Node 20+ recommended (matches package.json engines).
+
+name = "lizard-ui"
+compatibility_date = "2025-03-01"
+
+pages_build_output_dir = "./playground-dist"

@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="playground/public/assets/banner-lzard-ui.png" alt="Lizard-UI logo featuring a stylized isometric illustration of a lizard in a digital-organic habitat cube." width="800" />
+</p>
+
 # Lizard UI
 
 [![npm version](https://badge.fury.io/js/lizard-ui.svg)](https://www.npmjs.com/package/lizard-ui)
@@ -94,7 +98,7 @@ bun dev
 
 | Script        | Description                                      |
 | ------------- | ------------------------------------------------ |
-| `bun dev`     | Local showcase (eco-tech UI, hero art in `playground/assets/`) |
+| `bun dev`     | Local showcase (eco-tech UI, hero art in `playground/public/assets/`) |
 | `bun run build:site` | Vite static build to `playground-dist/` |
 | `bun run build` | Rollup build to `dist/` (ESM + CJS + `.d.ts`) |
 | `bun run test` | Jest tests                                      |

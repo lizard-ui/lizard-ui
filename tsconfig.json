@@ -6,7 +6,8 @@
     "jsx": "react-jsx",
     "declaration": true,
     "sourceMap": true,
-    "moduleResolution": "node",
+    "rootDir": "src",
+    "moduleResolution": "bundler",
     "skipLibCheck": true,
     "strict": true,
     "isolatedModules": true,
@@ -14,7 +15,6 @@
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true,
-    "downlevelIteration": true,
     "outDir": "dist"
   },
   "include": ["src"],

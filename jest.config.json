@@ -3,9 +3,14 @@
   "testEnvironment": "node",
   "extensionsToTreatAsEsm": [".ts"],
   "transform": {
-    "^.+\\.ts$": ["ts-jest", {
-      "useESM": true
-    }]  },
+    "^.+\\.ts$": [
+      "ts-jest",
+      {
+        "useESM": true,
+        "tsconfig": "<rootDir>/tsconfig.jest.json"
+      }
+    ]
+  },
   "roots": ["<rootDir>/src"],
   "testMatch": ["**/__tests__/**/*.test.ts"],
   "collectCoverageFrom": [

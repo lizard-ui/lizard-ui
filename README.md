@@ -8,121 +8,95 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![TypeScript](https://img.shields.io/badge/TypeScript-Ready-blue.svg)](https://www.typescriptlang.org/)
 [![Production Deployment](https://github.com/lizard-ui/lizard-ui/actions/workflows/deploy.yml/badge.svg?branch=main)](https://github.com/lizard-ui/lizard-ui/actions/workflows/deploy.yml)
-[![Coverage](https://codecov.io/gh/lizard-ui/lizard-ui/branch/main/graph/badge.svg)](https://codecov.io/gh/lizard-ui/lizard-ui)
 
-**Lizard UI** (`lizard-ui`) is a React component library with **shadcn-style** primitives (`Button`, `Card`, `Badge`, layout) and a **Tailwind-native glass** look: gradients, blur, and saturation use your theme tokens — **no** extra WebGL glass runtime.
+**Lizard UI** is a React component library with shadcn-style primitives and Tailwind-native glass styling — gradients, blur, and saturation driven by theme CSS variables, no extra runtime.
+
+---
+
+## Install
+
+```bash
+npm install lizard-ui
+# bun add lizard-ui  |  pnpm add lizard-ui
+```
+
+## Quick start
+
+```ts
+// 1. Import the theme stylesheet once
+import 'lizard-ui/styles/themes.css';
+```
+
+```tsx
+// 2. Wrap your app
+import { ThemeProvider } from 'lizard-ui';
+
+export default function Root() {
+  return <ThemeProvider><App /></ThemeProvider>;
+}
+```
+
+```tsx
+// 3. Use components
+import { Button, Card, CardContent } from 'lizard-ui';
+
+<Card variant="glassPrimary">
+  <CardContent>
+    <Button variant="glassSecondary">Action</Button>
+  </CardContent>
+</Card>
+```
 
 ---
 
 ## Features
 
-- **Light and dark UI** — Tailwind `darkMode: 'class'`; toggle `dark` on `<html>` (see [Themes](#tailwind-css-themes-and-appearance) below). Optional **system** appearance follows `prefers-color-scheme`.
-- **Glass variants** on `Card` (`glass`, `glassPrimary`, `glassSecondary`) and `Button` (`outline` with gradient border + frosted fill, plus `glassPrimary` / `glassSecondary` pills)
-- **23 color themes** via `data-theme` on `<html>` — Tailwind one-word palettes plus extras like `brown`; see `playground/theme-config.ts`; HSL tokens in `playground/themes.css` (light + `.dark` overrides)
-- Tree-shakeable ESM + CJS build, TypeScript types
-- Peer: **React**; **Tailwind** optional but recommended for glass utilities
+- **23 color themes** — swap palettes at runtime via `data-theme` on `<html>`
+- **Light / dark / system** — `ThemeProvider` + `useTheme` hook, persisted to `localStorage`
+- **Glass variants** — `Card` and `Button` glass surfaces tinted by theme `primary` / `secondary` tokens
+- **Standalone glass utilities** — import individual glass class functions for custom components
+- **Modular types** — one TypeScript file per component in `src/types/`
+- **Tailwind-safe LIST_MAPs** — all class strings statically present; no dynamic class generation
+- **Tree-shakeable** — ESM + CJS, TypeScript declarations
 
 ---
 
-## Tailwind CSS, themes, and appearance
+## Documentation
 
-### Hue themes (`data-theme`)
+Full reference in [`docs/`](./docs/README.md):
 
-Set **`data-theme`** on `<html>` to pick a palette. This repo includes every Tailwind **single-word** color name, plus **`brown`** (not in default Tailwind): `slate`, `gray`, `zinc`, `neutral`, `stone`, `brown`, `red`, `orange`, `amber`, `yellow`, `lime`, `green`, `emerald`, `teal`, `cyan`, `sky`, `blue`, `indigo`, `violet`, `purple`, `fuchsia`, `pink`, `rose`. Each maps to HSL CSS variables (`--background`, `--foreground`, `--primary`, …) in `playground/themes.css`.
-
-Mirror the same token names in your app’s `tailwind.config` (see `tailwind.config.ts`: `primary`, `secondary`, `muted`, `border`, `background`, `foreground`, etc.).
-
-### Light and dark (`class="dark"`)
-
-This repo’s Tailwind config uses **`darkMode: ['class']`**. **Light** is the default (no `dark` class on `<html>`). **Dark** adds **`class="dark"`** on the root element (`<html class="dark">`). Dark palettes use **`.dark[data-theme='…']`** (same element as `<html class="dark" data-theme="…">` — not a descendant selector), so each hue gets dark surfaces and keeps its primary tint.
-
-Set **`color-scheme`** for form controls and scrollbars: `document.documentElement.style.colorScheme = 'dark'` or `'light'` (the playground `ThemeProvider` does this).
-
-### System preference
-
-To follow the OS/browser theme, resolve once and on `prefers-color-scheme` changes, then toggle `dark` on `<html>` (see `playground/ThemeProvider.tsx` and the small script in `playground/index.html` that avoids a flash on load).
-
-### Scanning classes
-
-Add **`tailwindcss`** and include **`node_modules/lizard-ui`** (or your monorepo path) in **`content`** so Tailwind scans the library’s classes.
+| | |
+|---|---|
+| [Types](./docs/types/README.md) | Variant unions, component props, theme types |
+| [Utils](./docs/utils/README.md) | `cn`, token parser, variant MAP constructors, glass functions |
+| [Components](./docs/components/ui/README.md) | `Button`, `Card`, `Badge`, `BackgroundPattern`, layout |
+| [Contexts](./docs/contexts/README.md) | `ThemeProvider`, `useTheme` |
+| [Styles](./docs/styles/README.md) | Theme tokens, dark mode, custom themes, Tailwind config |
+| [Examples](./docs/examples/README.md) | Copy-paste snippets |
 
 ---
 
-## Installation
+## Dev scripts
 
-```bash
-bun add lizard-ui react react-dom
-# or
-npm install lizard-ui react react-dom
-# or
-pnpm add lizard-ui react react-dom
-```
-
-React 18+ is required.
-
----
-
-## Usage with Vite
-
-```tsx
-import { Button, Card, CardContent } from 'lizard-ui';
-
-export function Demo() {
-  return (
-    <Card variant="glassPrimary">
-      <CardContent className="p-5">
-        <p className="text-foreground">Frosted panel</p>
-        <Button type="button" variant="glassSecondary">
-          Action
-        </Button>
-      </CardContent>
-    </Card>
-  );
-}
-```
-
-Vite resolves the published `exports` map. Install `react` and `react-dom` in your app. Use Tailwind with **`data-theme`** for hue and **`class="dark"`** (or not) for light vs dark so `outline` and `glass*` variants pick up `primary` / `secondary` correctly.
-
----
-
-## Usage with Bun
-
-```bash
-bun install
-bun dev
-```
-
----
-
-## Developing this library
-
-| Script        | Description                                      |
-| ------------- | ------------------------------------------------ |
-| `bun dev`     | Local showcase (eco-tech UI, hero art in `playground/public/assets/`) |
-| `bun run build:site` | Vite static build to `playground-dist/` |
-| `bun run build` | Rollup build to `dist/` (ESM + CJS + `.d.ts`) |
-| `bun run test` | Jest tests                                      |
-| `bun run lint` | ESLint                                          |
-| `bun run typecheck` | `tsc --noEmit`                            |
+| Script | Description |
+|---|---|
+| `bun dev` | Vite playground at `localhost:5173` |
+| `bun run build` | Rollup → `dist/` (ESM + CJS + types + CSS) |
+| `bun run build:site` | Vite static build → `playground-dist/` |
+| `bun run test` | Jest |
+| `bun run lint` | ESLint |
+| `bun run typecheck` | `tsc --noEmit` |
 
 ---
 
 ## Contributing
 
-We welcome contributions. See [`CONTRIBUTING.md`](CONTRIBUTING.md) for guidelines.
-
-1. Fork the repository  
-2. Create a feature branch  
-3. Make your changes  
-4. Add or update tests where it makes sense  
-5. Open a pull request  
-
----
+Fork → branch → PR. See [`CONTRIBUTING.md`](CONTRIBUTING.md).
 
 ## License
 
-This project is licensed under the MIT License — see [`LICENSE`](LICENSE).
+MIT — see [`LICENSE`](LICENSE).
 
 ---
 
-Made with care by [xarlizard](https://www.github.com/xarlizard)
+Made by [xarlizard](https://www.github.com/xarlizard)

@@ -17,4 +17,9 @@ export default defineConfig({
       'lizard-ui': path.join(rootDir, 'src/index.ts'),
     },
   },
+  server: {
+    fs: {
+      allow: [rootDir],
+    },
+  },
 });

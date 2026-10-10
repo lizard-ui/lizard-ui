@@ -99,4 +99,4 @@ MIT — see [`LICENSE`](LICENSE).
 
 ---
 
-Made by [xarlizard](https://www.github.com/xarlizard)
+Made by [charlite](https://www.github.com/charlite)

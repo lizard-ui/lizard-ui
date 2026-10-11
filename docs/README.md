@@ -4,7 +4,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![TypeScript](https://img.shields.io/badge/TypeScript-Ready-blue.svg)](https://www.typescriptlang.org/)
 
-> Full reference documentation for **lizard-ui `0.0.2`**.  
+> Full reference documentation for **lizard-ui `0.1.0`**.  
 > For a quick-start see the [root README](../README.md).
 
 ---
@@ -13,6 +13,7 @@
 
 | Section | What's inside |
 |---|---|
+| [Agent knowledge (OKF)](../knowledge/index.md) | OKF v0.2 bundle for AI agents |
 | [types](./types/README.md) | TypeScript types and variant unions for every component and the theme system |
 | [utils](./utils/README.md) | `cn`, token parser, variant class constructors (LIST_MAPs), standalone glass functions |
 | [components](./components/README.md) | Top-level component overview |

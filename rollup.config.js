@@ -1,8 +1,8 @@
 import { copyFileSync, mkdirSync } from 'node:fs';
 import resolve from '@rollup/plugin-node-resolve';
-import typescript from '@rollup/plugin-typescript';
+import esbuild from 'rollup-plugin-esbuild';
 
-/** Inline Rollup plugin: copies src/styles/ into dist/styles/ after each build. */
+/** Copies src/styles/ into dist/styles/ after each build. */
 const copyStyles = {
   name: 'copy-styles',
   writeBundle() {
@@ -18,6 +18,7 @@ export default {
       file: 'dist/index.cjs',
       format: 'cjs',
       sourcemap: true,
+      exports: 'named',
     },
     {
       file: 'dist/index.esm.js',
@@ -25,15 +26,22 @@ export default {
       sourcemap: true,
     },
   ],
-  external: ['react', 'react-dom', 'react/jsx-runtime', 'lucide-react', 'react-markdown', 'remark-gfm'],
+  external: id =>
+    id === 'react' ||
+    id === 'react-dom' ||
+    id.startsWith('react/') ||
+    id === 'lucide-react' ||
+    id === 'react-markdown' ||
+    id === 'remark-gfm' ||
+    id.startsWith('@radix-ui/'),
   plugins: [
     resolve({
       extensions: ['.ts', '.tsx', '.js', '.jsx', '.mjs', '.cjs'],
     }),
-    typescript({
+    esbuild({
+      target: 'es2022',
       tsconfig: './tsconfig.json',
-      declaration: true,
-      declarationDir: 'dist',
+      jsx: 'automatic',
     }),
     copyStyles,
   ],

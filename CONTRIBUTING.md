@@ -128,12 +128,16 @@ Documentation improvements are always welcome:
 └── docs/                  # Documentation
 ```
 
+### Agent knowledge (OKF v0.2)
+
+Machine-readable context for AI agents lives in [`knowledge/`](./knowledge/index.md), with [`AGENTS.md`](./AGENTS.md) as the entry point. Update [`knowledge/log.md`](./knowledge/log.md) when you add or materially change concepts.
+
 ### Testing
 
-We use Jest for testing. Please ensure:
+We use [Vitest](https://vitest.dev/) for testing. Please ensure:
 
-- **All tests pass**: `npm test`
-- **Coverage remains high**: `npm run test:coverage`
+- **All tests pass**: `bun run test` (or `npm run test`)
+- **Coverage remains high**: `bun run test:coverage`
 - **New features have tests**: Add tests for new functionality
 - **Tests are descriptive**: Use clear test names and descriptions
 

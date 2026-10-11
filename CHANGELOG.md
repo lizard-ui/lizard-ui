@@ -5,6 +5,26 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.0] - 2026-10-11
+
+### Added
+
+- [Open Knowledge Format (OKF) v0.2](https://github.com/GoogleCloudPlatform/open-knowledge-format) bundle in `knowledge/` for agent-friendly project context.
+- `AGENTS.md` entry point linking OKF concepts, docs, and tooling.
+- Form controls: `Input`, `Textarea`, `Label`, `Checkbox`, `Switch`, `Select`.
+- Overlays: `Dialog`, `Popover`, `Tooltip`, `DropdownMenu`.
+- Display: `Alert`, `Avatar`, `Progress`, `Separator`, `Skeleton`, `Tabs`, `Accordion`.
+- `Calendar` and `DatePicker`, plus date helpers (`buildMonthGrid`, `formatDate`, and related).
+
+### Changed
+
+- Upgraded TypeScript to 7. Declarations are emitted with `tsc`; Rollup bundles with esbuild.
+- Replaced Jest with Vitest.
+- ESLint uses the flat `typescript-eslint` config. Lint runs through `scripts/lint.cjs` with TypeScript 6 until typescript-eslint supports TypeScript 7.
+- Node.js 26 is the development and CI runtime.
+- Removed unused `class-variance-authority` dependency.
+- npm package contents now include `docs/` and no longer ship `.github` templates.
+
 ## [0.0.2] - 2026-04-04
 
 Architectural refactor: modular types, variant class constructors, standalone glass utilities, theme system promoted to a first-class library export, full reference docs, and an in-playground docs viewer.

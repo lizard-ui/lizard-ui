@@ -11,6 +11,8 @@
 
 **Lizard UI** is a React component library with shadcn-style primitives and Tailwind-native glass styling — gradients, blur, and saturation driven by theme CSS variables, no extra runtime.
 
+🤖 **[Agent guide (OKF v0.2)](./AGENTS.md)** — machine-readable knowledge in [`knowledge/`](./knowledge/index.md).
+
 ---
 
 ## Install
@@ -57,6 +59,8 @@ import { Button, Card, CardContent } from 'lizard-ui';
 - **Standalone glass utilities** — import individual glass class functions for custom components
 - **Modular types** — one TypeScript file per component in `src/types/`
 - **Tailwind-safe LIST_MAPs** — all class strings statically present; no dynamic class generation
+- **Forms and overlays** — inputs, select, checkbox, switch, dialog, popover, menu, tabs, accordion
+- **Calendar and date picker** — month grid with locale-aware labels, no extra date library
 - **Tree-shakeable** — ESM + CJS, TypeScript declarations
 
 ---
@@ -83,7 +87,7 @@ Full reference in [`docs/`](./docs/README.md):
 | `bun dev` | Vite playground at `localhost:5173` |
 | `bun run build` | Rollup → `dist/` (ESM + CJS + types + CSS) |
 | `bun run build:site` | Vite static build → `playground-dist/` |
-| `bun run test` | Jest |
+| `bun run test` | Vitest |
 | `bun run lint` | ESLint |
 | `bun run typecheck` | `tsc --noEmit` |
 
@@ -91,7 +95,7 @@ Full reference in [`docs/`](./docs/README.md):
 
 ## Contributing
 
-Fork → branch → PR. See [`CONTRIBUTING.md`](CONTRIBUTING.md).
+Fork → branch → PR. See [`CONTRIBUTING.md`](CONTRIBUTING.md) and the [OKF knowledge bundle](./knowledge/index.md) for agent-oriented context.
 
 ## License
 

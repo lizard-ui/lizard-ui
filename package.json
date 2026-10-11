@@ -1,6 +1,6 @@
 {
   "name": "lizard-ui",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "Lizard UI — modern, stylish, minimalist React components. ESM/CJS package for Vite, Bun, and other bundlers.",
   "type": "module",
   "sideEffects": [
@@ -18,21 +18,20 @@
     "./styles/themes.css": "./dist/styles/themes.css"
   },
   "files": [
-    ".github/ISSUE_TEMPLATE",
-    ".github/workflows",
-    ".github/pull_request_template.md",
     "dist",
+    "docs",
+    "knowledge",
     "README.md",
     "LICENSE",
     "CHANGELOG.md"
   ],
   "scripts": {
-    "build": "rollup -c",
-    "test": "jest",
-    "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage",
-    "lint": "eslint \"src/**/*.{ts,tsx}\"",
-    "lint:fix": "eslint \"src/**/*.{ts,tsx}\" --fix",
+    "build": "rollup -c && tsc --emitDeclarationOnly",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "lint": "node scripts/lint.cjs \"src/**/*.{ts,tsx}\"",
+    "lint:fix": "node scripts/lint.cjs \"src/**/*.{ts,tsx}\" --fix",
     "format": "prettier --write \"src/**/*.{ts,tsx,js,jsx,json,md}\"",
     "format:check": "prettier --check \"src/**/*.{ts,tsx,js,jsx,json,md}\"",
     "typecheck": "tsc --noEmit",
@@ -78,7 +77,8 @@
     "esm",
     "glassmorphism",
     "tailwindcss",
-    "shadcn"
+    "shadcn",
+    "okf"
   ],
   "author": {
     "name": "charlite",
@@ -87,7 +87,7 @@
   },
   "license": "MIT",
   "engines": {
-    "node": ">=20.19.0"
+    "node": ">=26.0.0"
   },
   "peerDependencies": {
     "react": "^18.0.0 || ^19.0.0",
@@ -110,21 +110,16 @@
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
-    "@jest/globals": "^30.3.0",
     "@rollup/plugin-node-resolve": "^16.0.3",
-    "@rollup/plugin-typescript": "^12.3.0",
     "@tailwindcss/postcss": "^4.2.2",
-    "@types/jest": "^30.0.0",
-    "@types/node": "^25.5.0",
+    "@types/node": "^26.6.0",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
-    "@typescript-eslint/eslint-plugin": "^8.58.0",
-    "@typescript-eslint/parser": "^8.58.0",
     "@vitejs/plugin-react": "^6.0.1",
+    "@vitest/coverage-v8": "^5.0.3",
     "clsx": "^2.1.1",
+    "esbuild": "^0.28.2",
     "eslint": "^10.1.0",
-    "globals": "^17.4.0",
-    "jest": "^30.3.0",
     "lucide-react": "^0.577.0",
     "postcss": "^8.5.8",
     "prettier": "^3.8.1",
@@ -133,15 +128,30 @@
     "react-markdown": "^10.1.0",
     "remark-gfm": "^4.0.1",
     "rollup": "^4.60.1",
+    "rollup-plugin-esbuild": "^6.2.1",
     "tailwind-merge": "^3.5.0",
     "tailwindcss": "^4.2.0",
-    "ts-jest": "^29.4.6",
     "tslib": "^2.8.1",
-    "typescript": "~5.9.3",
-    "vite": "^8.0.3"
+    "typescript": "^7.0.2",
+    "typescript-6": "npm:typescript@6.0.3",
+    "typescript-eslint": "^8.46.0",
+    "vite": "^8.0.3",
+    "vitest": "^5.0.3"
   },
   "dependencies": {
+    "@radix-ui/react-accordion": "^1.2.21",
+    "@radix-ui/react-avatar": "^1.2.7",
+    "@radix-ui/react-checkbox": "^1.3.12",
+    "@radix-ui/react-dialog": "^1.2.0",
+    "@radix-ui/react-dropdown-menu": "^2.1.25",
+    "@radix-ui/react-label": "^2.1.16",
+    "@radix-ui/react-popover": "^1.2.0",
+    "@radix-ui/react-progress": "^1.1.17",
+    "@radix-ui/react-select": "^2.3.8",
+    "@radix-ui/react-separator": "^1.1.16",
     "@radix-ui/react-slot": "^1.2.4",
-    "class-variance-authority": "^0.7.1"
+    "@radix-ui/react-switch": "^1.3.8",
+    "@radix-ui/react-tabs": "^1.1.22",
+    "@radix-ui/react-tooltip": "^1.3.0"
   }
 }

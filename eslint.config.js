@@ -1,37 +1,34 @@
-import js from '@eslint/js';
-import tseslint from '@typescript-eslint/eslint-plugin';
-import tsparser from '@typescript-eslint/parser';
-import globals from 'globals';
+import eslint from '@eslint/js';
+import tseslint from 'typescript-eslint';
 
-export default [
+export default tseslint.config(
   {
-    ignores: ['dist/**', 'node_modules/**', '*.js', 'rollup.config.js', 'vite.config.ts', 'playground/**'],
+    ignores: [
+      'dist/**',
+      'node_modules/**',
+      'coverage/**',
+      'playground/**',
+      'playground-dist/**',
+      'rollup.config.js',
+      'vitest.config.ts',
+      'vitest.setup.ts',
+    ],
   },
+  eslint.configs.recommended,
+  ...tseslint.configs.recommended,
   {
     files: ['src/**/*.{ts,tsx}'],
-    languageOptions: {
-      parser: tsparser,
-      parserOptions: {
-        ecmaVersion: 'latest',
-        sourceType: 'module',
-      },
-      globals: {
-        ...globals.node,
-        ...globals.jest,
-      },
-    },
-    plugins: {
-      '@typescript-eslint': tseslint,
-    },
     rules: {
-      ...js.configs.recommended.rules,
       '@typescript-eslint/no-explicit-any': 'warn',
       '@typescript-eslint/no-unused-vars': 'warn',
-      'no-unused-vars': 'off', // Turn off base rule as it conflicts with @typescript-eslint/no-unused-vars
       'prefer-const': 'error',
       'no-var': 'error',
-      'no-undef': 'off',
     },
   },
-];
-
+  {
+    files: ['src/**/*.test.ts'],
+    rules: {
+      '@typescript-eslint/no-non-null-assertion': 'off',
+    },
+  }
+);

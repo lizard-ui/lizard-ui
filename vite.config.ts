@@ -7,9 +7,9 @@ const rootDir = path.dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
   plugins: [react()],
-  root: path.join(rootDir, 'playground'),
+  root: path.join(rootDir, 'website'),
   build: {
-    outDir: path.join(rootDir, 'playground-dist'),
+    outDir: path.join(rootDir, 'website-dist'),
     emptyOutDir: true,
   },
   resolve: {

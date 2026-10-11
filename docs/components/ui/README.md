@@ -186,6 +186,38 @@ Renders a vertical navigation list from a `items: VerticalMenuItem[]` prop.
 
 ---
 
+## Forms, overlays, and calendar
+
+These primitives use the same theme tokens (`background`, `border`, `primary`, `ring`) and, where interaction is non-trivial, Radix UI. `lucide-react` supplies icons and is a peer dependency.
+
+| Component | Use |
+|---|---|
+| `Input`, `Textarea`, `Label` | Text fields |
+| `Checkbox`, `Switch`, `Select` | Choices |
+| `Calendar`, `DatePicker` | Month grid and popover date field |
+| `Dialog`, `Popover`, `Tooltip`, `DropdownMenu` | Overlays |
+| `Tabs`, `Accordion` | Grouped content |
+| `Alert`, `Avatar`, `Progress`, `Separator`, `Skeleton` | Display |
+
+```tsx
+import { Calendar, DatePicker, Dialog, DialogContent, DialogTrigger, Button } from 'lizard-ui';
+
+<DatePicker value={date} onChange={setDate} />
+
+<Calendar selected={date} onSelect={setDate} weekStartsOn={1} />
+
+<Dialog>
+  <DialogTrigger asChild>
+    <Button>Open</Button>
+  </DialogTrigger>
+  <DialogContent>Details</DialogContent>
+</Dialog>
+```
+
+`Calendar` is controlled through `selected` / `onSelect` and optionally `month` / `onMonthChange`. `disabled` receives a date and returns whether that day cannot be chosen.
+
+---
+
 [Documentation](../../README.md) · [Types](../../types/README.md) · [Utils](../../utils/README.md) · [Components](../README.md) · **Components / UI** · [Contexts](../../contexts/README.md) · [Styles](../../styles/README.md) · [Examples](../../examples/README.md)
 
 [← Components](../README.md) — [Contexts →](../../contexts/README.md)

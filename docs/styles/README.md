@@ -48,7 +48,7 @@ Each palette sets these CSS custom properties (shadcn-style — no `hsl()` wrapp
 Set `data-theme` on `<html>` (the `ThemeProvider` does this automatically):
 
 ```html
-<html data-theme="lime">
+<html data-theme="neutral">
 ```
 
 Available values — 23 palettes:
@@ -62,10 +62,10 @@ Available values — 23 palettes:
 Add the `dark` class to `<html>` alongside `data-theme` (the `ThemeProvider` does this too):
 
 ```html
-<html class="dark" data-theme="lime">
+<html class="dark" data-theme="neutral">
 ```
 
-The stylesheet uses **same-element selectors** (`.dark[data-theme='lime']`, not a descendant) so both attributes must be on the same element.
+The stylesheet uses **same-element selectors** (`.dark[data-theme='neutral']`, not a descendant) so both attributes must be on the same element.
 
 Set `document.documentElement.style.colorScheme` to `'dark'` or `'light'` for native form controls and scrollbars to respect the mode.
 

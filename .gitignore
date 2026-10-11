@@ -6,7 +6,7 @@ node_modules/
 # Production builds
 /dist
 /build
-/playground-dist
+/website-dist
 
 # Testing
 coverage/

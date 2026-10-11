@@ -11,6 +11,7 @@ import {
 import {
   COLOR_SCHEMES,
   STORAGE_COLOR_SCHEME,
+  DEFAULT_THEME,
   STORAGE_THEME,
   THEMES,
   type ColorScheme,
@@ -25,7 +26,7 @@ function isThemeName(v: string | null): v is ThemeName {
 }
 
 function readInitialTheme(): ThemeName {
-  if (typeof document === 'undefined') return 'lime';
+  if (typeof document === 'undefined') return DEFAULT_THEME;
   try {
     const stored = localStorage.getItem(STORAGE_THEME);
     if (isThemeName(stored)) return stored;
@@ -34,7 +35,7 @@ function readInitialTheme(): ThemeName {
   }
   const t = document.documentElement.getAttribute('data-theme');
   if (isThemeName(t)) return t;
-  return 'lime';
+  return DEFAULT_THEME;
 }
 
 function readInitialColorScheme(): ColorScheme {

@@ -9,7 +9,8 @@ examples/
 tsconfig.json
 rollup.config.js
 .eslintrc.*
-jest.config.*
+vitest.config.ts
+vitest.setup.ts
 *.test.*
 *.spec.*
 

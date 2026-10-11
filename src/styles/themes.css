@@ -4,7 +4,7 @@
  * Usage:
  *   import 'lizard-ui/styles/themes.css';
  *
- * Then set `data-theme` on <html> (e.g. "lime") and optionally add the
+ * Then set `data-theme` on <html> (e.g. "neutral") and optionally add the
  * `dark` class for dark-mode overrides. The ThemeProvider from lizard-ui
  * manages both automatically.
  *

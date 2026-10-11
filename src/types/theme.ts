@@ -27,6 +27,9 @@ export const THEMES = [
 
 export type ThemeName = (typeof THEMES)[number];
 
+/** Default palette when nothing is stored and `data-theme` is missing or invalid. */
+export const DEFAULT_THEME: ThemeName = 'neutral';
+
 export const THEME_LABELS: Record<ThemeName, string> = {
   slate: 'Slate',
   gray: 'Gray',

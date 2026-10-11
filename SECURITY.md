@@ -95,7 +95,7 @@ When using this npm package in your applications:
 This package depends on:
 
 - **TypeScript**: Development dependency only
-- **Jest**: Development dependency only
+- **Vitest**: Development dependency only
 - **ESLint**: Development dependency only
 
 All runtime dependencies are kept to a minimum to reduce attack surface.

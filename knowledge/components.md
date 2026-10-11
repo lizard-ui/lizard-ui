@@ -67,4 +67,4 @@ Calendar math helpers (`buildMonthGrid`, `formatDate`, …) are exported from th
 | `CodeDisplayCard` | Preview + code tabs |
 | `MarkdownRenderer` | GFM markdown (optional peers `react-markdown`, `remark-gfm`) |
 
-Narrative docs: [`../docs/components/ui/README.md`](../docs/components/ui/README.md). Playground: [`../playground/`](../playground/).
+Narrative docs: [`../docs/components/ui/README.md`](../docs/components/ui/README.md). Live examples: [`../website/`](../website/).

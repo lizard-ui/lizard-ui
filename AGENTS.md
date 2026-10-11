@@ -21,7 +21,7 @@ This repository ships machine-readable project knowledge as an [Open Knowledge F
 | `src/__tests__/` | Vitest unit tests |
 | `knowledge/` | OKF v0.2 concepts for agents |
 | `docs/` | User documentation (Markdown) |
-| `playground/` | Vite dev site and component showcases |
+| `website/` | Vite dev site, docs viewer, and component showcases |
 
 ## Tooling (2026)
 

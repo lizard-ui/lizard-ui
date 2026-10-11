@@ -23,7 +23,7 @@ export type MainLayoutProps = {
   /** Optional chip(s) above the sidebar nav (e.g. version or status `Badge`). */
   menuBadge?: React.ReactNode;
   footerChildren?: React.ReactNode;
-  /** Initial sidebar visibility; default `false` (collapsed / off-canvas). */
+  /** Initial sidebar visibility; default `true` on the project site. */
   defaultSidebarOpen?: boolean;
   /** Decorative background behind the shell (e.g. `BackgroundPattern`). */
   background?: ReactNode;
@@ -41,7 +41,7 @@ export function MainLayout({
   menuBadge,
   footerChildren,
   background,
-  defaultSidebarOpen = false,
+  defaultSidebarOpen = true,
   className,
 }: MainLayoutProps) {
   const [sidebarOpen, setSidebarOpen] = useState(defaultSidebarOpen);

@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="playground/public/assets/banner-lzard-ui.png" alt="Lizard-UI logo featuring a stylized isometric illustration of a lizard in a digital-organic habitat cube." width="800" />
+  <img src="website/public/assets/banner-lzard-ui.png" alt="Lizard-UI logo featuring a stylized isometric illustration of a lizard in a digital-organic habitat cube." width="800" />
 </p>
 
 # Lizard UI
@@ -84,9 +84,9 @@ Full reference in [`docs/`](./docs/README.md):
 
 | Script | Description |
 |---|---|
-| `bun dev` | Vite playground at `localhost:5173` |
+| `bun dev` | Vite project site at `localhost:5173` (`website/`) |
 | `bun run build` | Rollup → `dist/` (ESM + CJS + types + CSS) |
-| `bun run build:site` | Vite static build → `playground-dist/` |
+| `bun run build:site` | Vite static build → `website-dist/` |
 | `bun run test` | Vitest |
 | `bun run lint` | ESLint |
 | `bun run typecheck` | `tsc --noEmit` |

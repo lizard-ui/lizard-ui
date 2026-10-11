@@ -26,7 +26,7 @@ bun run test
 bun run build
 ```
 
-Optional: `bun run test:coverage`, `bun run format:check`, `bun dev` for playground.
+Optional: `bun run test:coverage`, `bun run format:check`, `bun dev` for the project website.
 
 ## Tests
 

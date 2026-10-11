@@ -2,7 +2,7 @@ import type { Config } from 'tailwindcss';
 
 const config: Config = {
   darkMode: 'class',
-  content: ['./playground/**/*.{ts,tsx}', './src/**/*.{ts,tsx}'],
+  content: ['./website/**/*.{ts,tsx}', './src/**/*.{ts,tsx}'],
   theme: {
     extend: {
       fontFamily: {

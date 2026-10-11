@@ -25,7 +25,7 @@ Each palette is selected with `data-theme` on `<html>` (for example `data-theme=
 - **`useTheme`** — read/update theme name and light/dark/system preference.
 - Constants: `THEMES`, `COLOR_SCHEMES`, `THEME_LABELS`, `COLOR_SCHEME_LABELS` from [`../src/types/theme.ts`](../src/types/theme.ts).
 
-Consumers using Tailwind should map tokens in `tailwind.config` (see [`../docs/styles/README.md`](../docs/styles/README.md) and playground `tailwind.config.ts`).
+Consumers using Tailwind should map tokens in `tailwind.config` (see [`../docs/styles/README.md`](../docs/styles/README.md) and root `tailwind.config.ts`, which also scans `website/`).
 
 ## Glass surfaces
 

@@ -131,7 +131,7 @@ import { Badge } from 'lizard-ui';
 
 ## Avoiding flash of wrong theme
 
-Add this inline script in `<head>` before any CSS loads (identical to what the playground does):
+Add this inline script in `<head>` before any CSS loads (identical to what the project website does):
 
 ```html
 <script>

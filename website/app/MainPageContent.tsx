@@ -9,12 +9,9 @@ import {
   useTheme,
   CodeDisplayCard,
 } from 'lizard-ui';
-import { CopyInstallButton, INSTALL } from './components/CopyInstallButton';
+import { InstallSection } from './components/InstallSection';
 import { HERO_TERRARIUM } from './heroTerrarium';
-import cardShowcaseRaw from '../examples/card-showcase.example.tsx?raw';
-import buttonShowcaseRaw from '../examples/button-showcase.example.tsx?raw';
-import { CardShowcaseExample } from '../examples/card-showcase.example';
-import { ButtonShowcaseExample } from '../examples/button-showcase.example';
+import { COMPONENT_SHOWCASES } from './showcase-registry';
 
 const cardDemoByTint = {
   default: 'glass-thick',
@@ -39,21 +36,20 @@ export function MainPageContent() {
           <div>
             <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-border bg-muted/60 px-3 py-1 text-xs font-semibold text-muted-foreground">
               <span className="h-2 w-2 rounded-full bg-primary shadow-[0_0_0_3px_hsl(var(--primary)/0.25)]" />
-              Eco-tech · Tailwind glass · 23 themes
+              React UI kit · Radix primitives · 23 themes
             </div>
             <h1 className="text-balance text-4xl font-bold tracking-tight text-foreground md:text-5xl">
-              Nature meets precision glass
+              Theme-aware components for modern React apps
             </h1>
             <p className="mt-4 max-w-xl text-pretty text-base text-muted-foreground md:text-lg">
-              Compose surfaces with hyphen tokens — e.g.{' '}
+              Forms, overlays, layout chrome, and glass surfaces in one library. Hyphen token variants stay order-free — e.g.{' '}
               <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-sm">glass-thin-secondary</code> and{' '}
-              <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-sm">glass-secondary-thin</code> resolve the same (
+              <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-sm">glass-secondary-thin</code> both resolve to{' '}
               <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-sm">
                 {canonicalVariantLabel('glass-secondary-thin')}
               </code>
-              ). <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-sm">Card</code> and{' '}
-              <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-sm">Button</code> share the same token rules;{' '}
-              <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-sm">solid</code> is the opaque baseline.
+              . Drop in <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-sm">ThemeProvider</code>, import{' '}
+              <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-sm">lizard-ui/styles/themes.css</code>, and build with Tailwind.
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-3">
               <Button variant="glass-primary-thick" asChild>
@@ -72,7 +68,7 @@ export function MainPageContent() {
             <div className="relative w-full max-w-md animate-[float_7s_ease-in-out_infinite] rounded-3xl border border-white/60 bg-gradient-to-br from-white/90 via-white/50 to-primary/20 p-1 shadow-xl [@media(prefers-reduced-motion:reduce)]:animate-none">
               <img
                 src={heroSrc}
-                alt="Lizard UI terrarium artwork"
+                alt="Lizard UI artwork"
                 className="h-auto w-full rounded-[1.35rem] object-cover"
               />
             </div>
@@ -86,10 +82,17 @@ export function MainPageContent() {
           <p className="mt-2 max-w-2xl text-muted-foreground">
             Set <code className="rounded bg-muted px-1 font-mono text-sm">data-theme</code> on{' '}
             <code className="rounded bg-muted px-1 font-mono text-sm">&lt;html&gt;</code> (see{' '}
-            <code className="rounded bg-muted px-1 font-mono text-sm">playground/themes.css</code>). Include{' '}
+            <code className="rounded bg-muted px-1 font-mono text-sm">lizard-ui/styles/themes.css</code>). Include{' '}
             <code className="rounded bg-muted px-1 font-mono text-sm">lizard-ui</code> in{' '}
             <code className="rounded bg-muted px-1 font-mono text-sm">tailwind.content</code> so glass utilities compile.
           </p>
+          <div className="mt-6">
+            <Button variant="link" size="sm" asChild>
+              <a href="#/docs">
+                <span className="text-sm font-semibold">{'View more -->'}</span>
+              </a>
+            </Button>
+          </div>
         </div>
       </section>
 
@@ -97,12 +100,7 @@ export function MainPageContent() {
         <div className="mx-auto max-w-6xl px-4 md:px-6">
           <h2 className="text-2xl font-bold tracking-tight text-foreground">Installation</h2>
           <p className="mt-2 text-muted-foreground">Install the package with React; Tailwind + theme CSS live in your app.</p>
-          <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-stretch">
-            <div className="flex flex-1 items-center overflow-x-auto rounded-lg border border-border bg-muted/40 px-4 py-3 font-mono text-sm text-foreground">
-              <code className="whitespace-pre">{INSTALL}</code>
-            </div>
-            <CopyInstallButton />
-          </div>
+          <InstallSection />
         </div>
       </section>
 
@@ -110,28 +108,17 @@ export function MainPageContent() {
         <div className="mx-auto max-w-6xl px-4 md:px-6">
           <h2 className="text-2xl font-bold tracking-tight text-foreground">Components</h2>
           <p className="mt-2 max-w-2xl text-muted-foreground">
-            Toggle <strong className="font-medium text-foreground">Preview</strong> vs <strong className="font-medium text-foreground">Code</strong> — source
-            loads with Vite <code className="rounded bg-muted px-1 font-mono text-sm">?raw</code>. Code uses theme-tinted syntax colors.
+            Each card shows <strong className="font-medium text-foreground">variants and states</strong> (like Button:
+            presets, glass, sizes, loading, disabled). Toggle <strong className="font-medium text-foreground">Preview</strong>{' '}
+            vs <strong className="font-medium text-foreground">Code</strong> for copy-pasteable examples.
           </p>
 
           <div className="mt-10 space-y-14">
-            <article id="card-showcase">
-              <CodeDisplayCard
-                title="Card"
-                filename="card-showcase.example.tsx"
-                code={cardShowcaseRaw}
-                preview={<CardShowcaseExample />}
-              />
-            </article>
-
-            <article id="button-showcase">
-              <CodeDisplayCard
-                title="Button"
-                filename="button-showcase.example.tsx"
-                code={buttonShowcaseRaw}
-                preview={<ButtonShowcaseExample />}
-              />
-            </article>
+            {COMPONENT_SHOWCASES.map(({ id, title, filename, code, Preview }) => (
+              <article key={id} id={id}>
+                <CodeDisplayCard title={title} filename={filename} code={code} preview={<Preview />} />
+              </article>
+            ))}
           </div>
         </div>
       </section>

@@ -15,9 +15,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Overlays: `Dialog`, `Popover`, `Tooltip`, `DropdownMenu`.
 - Display: `Alert`, `Avatar`, `Progress`, `Separator`, `Skeleton`, `Tabs`, `Accordion`.
 - `Calendar` and `DatePicker`, plus date helpers (`buildMonthGrid`, `formatDate`, and related).
+- Project site (`website/`) per-component showcases (Preview / Code) for each exported primitive.
 
 ### Changed
 
+- Renamed `playground/` → `website/` and static build output `playground-dist/` → `website-dist/` (Cloudflare Pages / `wrangler.toml` updated).
 - Upgraded TypeScript to 7. Declarations are emitted with `tsc`; Rollup bundles with esbuild.
 - Replaced Jest with Vitest.
 - ESLint uses the flat `typescript-eslint` config. Lint runs through `scripts/lint.cjs` with TypeScript 6 until typescript-eslint supports TypeScript 7.

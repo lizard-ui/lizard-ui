@@ -70,7 +70,7 @@ Documentation improvements are always welcome:
 
 ### Prerequisites
 
-- Node.js 20.19+ (required for Vite 8 / playground)
+- Node.js 20.19+ (required for Vite 8 / project website in `website/`)
 - Bun (recommended) or npm 10+
 - Git
 - PowerShell (for Windows-specific scripts)

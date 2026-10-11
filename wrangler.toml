@@ -8,4 +8,4 @@
 name = "lizard-ui"
 compatibility_date = "2025-03-01"
 
-pages_build_output_dir = "./playground-dist"
+pages_build_output_dir = "./website-dist"

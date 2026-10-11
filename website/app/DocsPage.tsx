@@ -3,7 +3,7 @@ import { MarkdownRenderer } from 'lizard-ui';
 
 /**
  * All markdown files in docs/ — loaded as raw strings at build time.
- * Paths are relative to this file (playground/DocsPage.tsx → ../docs/).
+ * Paths are relative to this file (website/app/DocsPage.tsx → ../../docs/).
  */
 const DOC_MODULES = import.meta.glob('../../docs/**/*.md', {
   query: '?raw',

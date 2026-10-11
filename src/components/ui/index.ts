@@ -27,7 +27,13 @@ export { Footer, type FooterProps } from './footer';
 export { GitHubFooter, type GitHubFooterProps } from './githubFooter';
 export { Header, type HeaderProps } from './header';
 export { Sidebar, type SidebarProps } from './sidebar';
-export { VerticalMenu, type VerticalMenuItem, type VerticalMenuProps } from './verticalMenu';
+export {
+  VerticalMenu,
+  type VerticalMenuItem,
+  type VerticalMenuLinkItem,
+  type VerticalMenuProps,
+  type VerticalMenuSeparatorItem,
+} from './verticalMenu';
 export { CodeDisplayCard, type CodeDisplayCardProps } from './codeDisplayCard';
 export { MarkdownRenderer, type MarkdownRendererProps } from './markdownRenderer';
 export { ThemeSelect } from './themeSelect';

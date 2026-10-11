@@ -32,7 +32,7 @@ export default function App() {
       className="min-h-screen"
       menuItems={isDocsRoute ? DOCS_MENU_ITEMS : PAGE_MENU_ITEMS}
       menuTitle={isDocsRoute ? 'Docs' : 'Navigate'}
-      menuBadge={<Badge variant="muted">v0.0.2</Badge>}
+      menuBadge={<Badge variant="muted">v0.1.0</Badge>}
       headerActions={
         <>
           <AppearanceToggle />

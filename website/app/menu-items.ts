@@ -1,16 +1,17 @@
 import type { VerticalMenuItem } from 'lizard-ui';
+import { SHOWCASE_MENU_ITEMS } from './showcase-registry';
 
 export const PAGE_MENU_ITEMS: VerticalMenuItem[] = [
   { label: 'Docs', href: '#/docs' },
   { label: 'Components', href: '#components' },
   { label: 'Installation', href: '#install' },
-  { label: 'Card', href: '#card-showcase' },
-  { label: 'Button', href: '#button-showcase' },
+  { kind: 'separator' },
+  ...SHOWCASE_MENU_ITEMS,
   { label: 'Glass variants', href: '#tint-matrix' },
 ];
 
 export const DOCS_MENU_ITEMS: VerticalMenuItem[] = [
-  { label: '← Playground', href: '#' },
+  { label: '← Site', href: '#' },
   { label: 'Documentation', href: '#/docs' },
   { label: 'Types', href: '#/docs/types' },
   { label: 'Utils', href: '#/docs/utils' },

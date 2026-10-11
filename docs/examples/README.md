@@ -136,7 +136,7 @@ Add this inline script in `<head>` before any CSS loads (identical to what the p
 ```html
 <script>
   (function () {
-    var theme = localStorage.getItem('lizard-ui-theme') || 'lime';
+    var theme = localStorage.getItem('lizard-ui-theme') || 'neutral';
     var scheme = localStorage.getItem('lizard-ui-color-scheme') || 'system';
     document.documentElement.setAttribute('data-theme', theme);
     var dark =

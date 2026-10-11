@@ -12,7 +12,7 @@ import { ThemeProvider } from 'lizard-ui';
 
 Wrap your application root with `ThemeProvider` to enable managed theme switching. It:
 
-- Reads the initial theme from `localStorage` (key `lizard-ui-theme`) and the `data-theme` attribute on `<html>`, defaulting to `'lime'`.
+- Reads the initial theme from `localStorage` (key `lizard-ui-theme`) and the `data-theme` attribute on `<html>`, defaulting to `'neutral'` (`DEFAULT_THEME`).
 - Reads the initial color scheme from `localStorage` (key `lizard-ui-color-scheme`), defaulting to `'system'`.
 - Writes `data-theme` on `<html>` and persists both values to `localStorage` on change.
 - Toggles `class="dark"` and sets `document.documentElement.style.colorScheme` when the effective appearance changes.
@@ -58,7 +58,7 @@ function ThemeSwitcher() {
 
 | Field | Type | Description |
 |---|---|---|
-| `theme` | `ThemeName` | Active palette (e.g. `'lime'`) |
+| `theme` | `ThemeName` | Active palette (e.g. `'neutral'`) |
 | `setTheme` | `(t: ThemeName) => void` | Change the active palette |
 | `colorScheme` | `ColorScheme` | `'light' \| 'dark' \| 'system'` |
 | `setColorScheme` | `(s: ColorScheme) => void` | Change the color scheme |

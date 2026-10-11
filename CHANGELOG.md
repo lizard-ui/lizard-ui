@@ -26,6 +26,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Node.js 26 is the development and CI runtime.
 - Removed unused `class-variance-authority` dependency.
 - npm package contents now include `docs/` and no longer ship `.github` templates.
+- Library default theme is **neutral** (`DEFAULT_THEME`); the project site uses **`data-theme="teal"`** on `website/index.html`.
 
 ## [0.0.2] - 2026-04-04
 

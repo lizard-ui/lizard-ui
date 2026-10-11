@@ -17,7 +17,7 @@ Published import:
 import 'lizard-ui/styles/themes.css';
 ```
 
-Each palette is selected with `data-theme` on `<html>` (for example `data-theme="lime"`). Tokens follow the shadcn-style HSL variable pattern (`--background`, `--primary`, `--border`, `--ring`, …). Dark mode uses the `dark` class on `<html>`.
+Each palette is selected with `data-theme` on `<html>`. `ThemeProvider` falls back to **`DEFAULT_THEME`** (`neutral` in `src/types/theme.ts`) when storage and `data-theme` are unset. The project site sets `data-theme="teal"` on [`../website/index.html`](../website/index.html). Tokens follow the shadcn-style HSL variable pattern (`--background`, `--primary`, `--border`, `--ring`, …). Dark mode uses the `dark` class on `<html>`.
 
 ## React API
 

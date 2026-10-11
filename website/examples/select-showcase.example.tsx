@@ -5,12 +5,12 @@ function HueSelect({ disabled }: { disabled?: boolean }) {
   return (
     <div className="w-full min-w-[12rem] max-w-xs space-y-2 text-left">
       <Label>Theme hue</Label>
-      <Select defaultValue="lime" disabled={disabled}>
+      <Select defaultValue="teal" disabled={disabled}>
         <SelectTrigger>
           <SelectValue placeholder="Pick a hue" />
         </SelectTrigger>
         <SelectContent>
-          <SelectItem value="lime">Lime</SelectItem>
+          <SelectItem value="teal">Teal</SelectItem>
           <SelectItem value="emerald">Emerald</SelectItem>
           <SelectItem value="cyan">Cyan</SelectItem>
           <SelectItem value="violet">Violet</SelectItem>

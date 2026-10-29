@@ -5,6 +5,24 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.1] - 2026-10-29
+
+### Added
+
+- **`ErrorBoundary`** and **`ErrorBoundaryFallback`** — themed fallback (`Card`, destructive icon, reload / try again, optional dev stack details via `showDetailsInDevelopment`, customizable `labels` and `onError`).
+- **`Loader`** — shared loading indicator with sizes `sm` | `default` | `lg` | `xl` and variants **`spinner`** (default), **`dots`**, **`ring`**, **`bars`**, **`pulse`**; exported `loaderVariants` and related token maps.
+- Project site showcases for **ErrorBoundary** and **Loader** on the components page (alphabetical registry).
+
+### Changed
+
+- **`Button`** `loading` now renders the package **`Loader`** (`spinner`) instead of an inline SVG.
+- **`ErrorBoundary`** reload action sets **`reloadLoading`** on the fallback reload button before `location.reload()`.
+- **`website/main.tsx`** wraps the app in **`ErrorBoundary`**.
+- Aligned **`react`** / **`react-dom`** dev dependencies (fixes React #527 mismatch after partial Dependabot bumps).
+- **`vite.config.ts`** — `resolve.dedupe` for `react` and `react-dom` on the project site.
+
+[0.1.1]: https://github.com/lizard-ui/lizard-ui/compare/v0.1.0...v0.1.1
+
 ## [0.1.0] - 2026-10-11
 
 ### Added

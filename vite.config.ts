@@ -16,6 +16,7 @@ export default defineConfig({
     alias: {
       'lizard-ui': path.join(rootDir, 'src/index.ts'),
     },
+    dedupe: ['react', 'react-dom'],
   },
   server: {
     fs: {

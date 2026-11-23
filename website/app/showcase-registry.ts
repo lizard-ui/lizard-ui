@@ -9,8 +9,10 @@ import { ShowcaseExample as CheckboxShowcase } from '../examples/checkbox-showca
 import { ShowcaseExample as DatePickerShowcase } from '../examples/date-picker-showcase.example';
 import { ShowcaseExample as DialogShowcase } from '../examples/dialog-showcase.example';
 import { ShowcaseExample as DropdownMenuShowcase } from '../examples/dropdown-menu-showcase.example';
+import { ShowcaseExample as ErrorBoundaryShowcase } from '../examples/error-boundary-showcase.example';
 import { ShowcaseExample as InputShowcase } from '../examples/input-showcase.example';
 import { ShowcaseExample as LabelShowcase } from '../examples/label-showcase.example';
+import { ShowcaseExample as LoaderShowcase } from '../examples/loader-showcase.example';
 import { ShowcaseExample as PopoverShowcase } from '../examples/popover-showcase.example';
 import { ShowcaseExample as ProgressShowcase } from '../examples/progress-showcase.example';
 import { ShowcaseExample as SelectShowcase } from '../examples/select-showcase.example';
@@ -36,8 +38,10 @@ import checkboxShowcaseRaw from '../examples/checkbox-showcase.example.tsx?raw';
 import datePickerShowcaseRaw from '../examples/date-picker-showcase.example.tsx?raw';
 import dialogShowcaseRaw from '../examples/dialog-showcase.example.tsx?raw';
 import dropdownMenuShowcaseRaw from '../examples/dropdown-menu-showcase.example.tsx?raw';
+import errorBoundaryShowcaseRaw from '../examples/error-boundary-showcase.example.tsx?raw';
 import inputShowcaseRaw from '../examples/input-showcase.example.tsx?raw';
 import labelShowcaseRaw from '../examples/label-showcase.example.tsx?raw';
+import loaderShowcaseRaw from '../examples/loader-showcase.example.tsx?raw';
 import popoverShowcaseRaw from '../examples/popover-showcase.example.tsx?raw';
 import progressShowcaseRaw from '../examples/progress-showcase.example.tsx?raw';
 import selectShowcaseRaw from '../examples/select-showcase.example.tsx?raw';
@@ -74,11 +78,13 @@ export const COMPONENT_SHOWCASES: ComponentShowcase[] = [
   { id: 'date-picker-showcase', title: 'DatePicker', filename: 'date-picker-showcase.example.tsx', code: datePickerShowcaseRaw, Preview: DatePickerShowcase },
   { id: 'dialog-showcase', title: 'Dialog', filename: 'dialog-showcase.example.tsx', code: dialogShowcaseRaw, Preview: DialogShowcase },
   { id: 'dropdown-menu-showcase', title: 'DropdownMenu', filename: 'dropdown-menu-showcase.example.tsx', code: dropdownMenuShowcaseRaw, Preview: DropdownMenuShowcase },
+  { id: 'error-boundary-showcase', title: 'ErrorBoundary', filename: 'error-boundary-showcase.example.tsx', code: errorBoundaryShowcaseRaw, Preview: ErrorBoundaryShowcase },
   { id: 'footer-showcase', title: 'Footer', filename: 'footer-showcase.example.tsx', code: footerShowcaseRaw, Preview: FooterShowcase },
   { id: 'github-footer-showcase', title: 'GitHubFooter', filename: 'github-footer-showcase.example.tsx', code: githubFooterShowcaseRaw, Preview: GitHubFooterShowcase },
   { id: 'header-showcase', title: 'Header', filename: 'header-showcase.example.tsx', code: headerShowcaseRaw, Preview: HeaderShowcase },
   { id: 'input-showcase', title: 'Input', filename: 'input-showcase.example.tsx', code: inputShowcaseRaw, Preview: InputShowcase },
   { id: 'label-showcase', title: 'Label', filename: 'label-showcase.example.tsx', code: labelShowcaseRaw, Preview: LabelShowcase },
+  { id: 'loader-showcase', title: 'Loader', filename: 'loader-showcase.example.tsx', code: loaderShowcaseRaw, Preview: LoaderShowcase },
   { id: 'popover-showcase', title: 'Popover', filename: 'popover-showcase.example.tsx', code: popoverShowcaseRaw, Preview: PopoverShowcase },
   { id: 'progress-showcase', title: 'Progress', filename: 'progress-showcase.example.tsx', code: progressShowcaseRaw, Preview: ProgressShowcase },
   { id: 'select-showcase', title: 'Select', filename: 'select-showcase.example.tsx', code: selectShowcaseRaw, Preview: SelectShowcase },

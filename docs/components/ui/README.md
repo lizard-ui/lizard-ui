@@ -198,6 +198,8 @@ These primitives use the same theme tokens (`background`, `border`, `primary`, `
 | `Dialog`, `Popover`, `Tooltip`, `DropdownMenu` | Overlays |
 | `Tabs`, `Accordion` | Grouped content |
 | `Alert`, `Avatar`, `Progress`, `Separator`, `Skeleton` | Display |
+| `ErrorBoundary`, `ErrorBoundaryFallback` | React error boundary with themed fallback (optional `labels`, `onError`) |
+| `Loader`, `loaderVariants` | `spinner`, `dots`, `ring`, `bars`, `pulse`; sizes `sm`–`xl` (`spinner` on `Button` `loading`) |
 
 ```tsx
 import { Calendar, DatePicker, Dialog, DialogContent, DialogTrigger, Button } from 'lizard-ui';

@@ -51,8 +51,12 @@ export {
   DropdownMenuRadioItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
+  ErrorBoundary,
+  ErrorBoundaryFallback,
   Input,
   Label,
+  Loader,
+  loaderVariants,
   Popover,
   PopoverContent,
   PopoverTrigger,
@@ -78,6 +82,9 @@ export {
   type CalendarProps,
   type DatePickerProps,
   type InputProps,
+  type LoaderProps,
+  type LoaderSize,
+  type LoaderVariant,
   type TextareaProps,
   type BackgroundPatternProps,
   type BadgeProps,
@@ -100,6 +107,21 @@ export {
 
 // Utilities
 export { cn } from './utils/cn';
+export {
+  LOADER_BAR_GAP_MAP,
+  LOADER_BAR_SIZE_MAP,
+  LOADER_BARS_BASE,
+  LOADER_DOTS_BASE,
+  LOADER_DOT_GAP_MAP,
+  LOADER_DOT_SIZE_MAP,
+  LOADER_PULSE_BASE,
+  LOADER_RING_BASE,
+  LOADER_SIZE_MAP,
+  LOADER_SPINNER_BASE,
+  loaderDotClass,
+  loaderBarClass,
+  loaderVariants as loaderClassVariants,
+} from './utils/ui/loader';
 export {
   addMonths,
   buildMonthGrid,
@@ -185,6 +207,12 @@ export type {
   BackgroundPatternVariant,
 } from './types/ui/background-pattern';
 export type { CardVariantPreset } from './types/ui/card';
+export {
+  DEFAULT_ERROR_BOUNDARY_LABELS,
+  type ErrorBoundaryFallbackProps,
+  type ErrorBoundaryLabels,
+  type ErrorBoundaryProps,
+} from './types/ui/errorBoundary';
 
 // Theme types, constants, and LIST_COLORS
 export {

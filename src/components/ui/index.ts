@@ -71,8 +71,10 @@ export {
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from './dropdownMenu';
+export { ErrorBoundary, ErrorBoundaryFallback } from './errorBoundary';
 export { Input, type InputProps } from './input';
 export { Label } from './label';
+export { Loader, loaderVariants, type LoaderProps, type LoaderSize, type LoaderVariant } from './loader';
 export { Popover, PopoverAnchor, PopoverContent, PopoverTrigger } from './popover';
 export { Progress } from './progress';
 export {
